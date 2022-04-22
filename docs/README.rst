@@ -1,4 +1,5 @@
-Software Heritage - Python module template
-==========================================
+Software Heritage - Metadata Fetchers
+=====================================
 
-Python module template, used as skeleton to create new modules.
+This package hooks into the loaders, and loads extrinsic metadata at the same time
+code artifacts are retrieved.

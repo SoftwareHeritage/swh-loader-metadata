@@ -36,18 +36,15 @@ def parse_requirements(*names):
     return requirements
 
 
-# Edit this part to match your module, replace foo by its name
-# Full sample:
-#   https://forge.softwareheritage.org/diffusion/DCORE/browse/master/setup.py
 setup(
-    name="swh.foo",  # example: swh.loader.pypi
-    description="Software Heritage <Module's intent>",
+    name="swh.loader.metadata",
+    description="Software Heritage Extrinsic Metadata Fetchers",
     long_description=long_description,
     long_description_content_type="text/x-rst",
     python_requires=">=3.7",
     author="Software Heritage developers",
     author_email="swh-devel@inria.fr",
-    url="https://forge.softwareheritage.org/diffusion/<module-git-code>",
+    url="https://forge.softwareheritage.org/diffusion/swh-loader-metadata",
     packages=find_packages(),  # packages's modules
     install_requires=parse_requirements(None, "swh"),
     tests_require=parse_requirements("test"),
@@ -56,8 +53,8 @@ setup(
     extras_require={"testing": parse_requirements("test")},
     include_package_data=True,
     entry_points="""
-        [swh.cli.subcommands]
-        foo=swh.foo.cli
+        [swh.loader.metadata]
+        github=swh.loader.metadata.github:GitHubMetadataFetcher
     """,
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -69,7 +66,7 @@ setup(
     project_urls={
         "Bug Reports": "https://forge.softwareheritage.org/maniphest",
         "Funding": "https://www.softwareheritage.org/donate",
-        "Source": "https://forge.softwareheritage.org/source/swh-<module>",
-        "Documentation": "https://docs.softwareheritage.org/devel/swh-<module>/",
+        "Source": "https://forge.softwareheritage.org/source/swh-loader-metadata",
+        "Documentation": "https://docs.softwareheritage.org/devel/swh-loader-metadata/",
     },
 )

@@ -1,1 +1,7 @@
 pytest
+pytest-mock
+requests_mock
+types-requests
+types-PyYAML
+
+swh-storage[testing]
