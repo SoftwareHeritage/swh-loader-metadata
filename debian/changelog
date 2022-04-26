@@ -1,0 +1,5 @@
+swh-loader-metadata (0.0.1-1~swh1) unstable-swh; urgency=medium
+
+  * Initial release
+
+ -- Valentin Lorentz <vlorentz@softwareheritage.org>  Tue, 26 Apr 2022 12:31:21 +0200
