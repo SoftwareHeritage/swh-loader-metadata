@@ -1,8 +1,11 @@
-swh-loader-metadata (0.0.1-1~swh2~bpo10+1) buster-swh; urgency=medium
+swh-loader-metadata (0.0.2-1~swh1) unstable-swh; urgency=medium
 
-  * Rebuild for buster-swh
+  * New upstream release 0.0.2     - (tagged by Valentin Lorentz
+    <vlorentz@softwareheritage.org> on 2022-04-27 16:38:46 +0200)
+  * Upstream changes:     - v0.0.2     - * Add method
+    get_parent_origins()
 
- -- Software Heritage autobuilder (on jenkins-debian1) <jenkins@jenkins-debian1.internal.softwareheritage.org>  Tue, 26 Apr 2022 14:44:58 +0000
+ -- Software Heritage autobuilder (on jenkins-debian1) <jenkins@jenkins-debian1.internal.softwareheritage.org>  Wed, 27 Apr 2022 14:42:31 +0000
 
 swh-loader-metadata (0.0.1-1~swh2) unstable-swh; urgency=medium
 

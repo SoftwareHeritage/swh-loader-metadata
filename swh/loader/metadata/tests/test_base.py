@@ -70,6 +70,9 @@ class DummyMetadataFetcher(BaseMetadataFetcher):
     def get_origin_metadata(self):
         return [REMD]
 
+    def get_parent_origins(self):
+        return []
+
 
 def test_load(swh_storage, mocker):
     mocker.patch(

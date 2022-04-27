@@ -171,6 +171,12 @@ class BaseMetadataFetcher:
 
         return self._origin_metadata_objects
 
+    def get_parent_origins(self) -> List[Origin]:
+        """If the given origin is a "forge fork" (ie. created with the "Fork" button
+        of GitHub-like forges), returns a list of origins it was forked from;
+        closest parent first."""
+        raise NotImplementedError(f"{self.__class__.__name__}.get_parent_origins")
+
 
 if TYPE_CHECKING:
     # Makes mypy check BaseMetadataFetcher follows the MetadataFetcherProtocol
