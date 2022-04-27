@@ -5,11 +5,13 @@
 
 """Metadata fetcher for GitHub."""
 
+import json
 import re
 from typing import List, Optional, Tuple
 import urllib.parse
 
 from swh.lister.github.utils import GitHubSession
+from swh.model.model import Origin
 
 from . import USER_AGENT
 from .base import BaseMetadataFetcher, InvalidOrigin
@@ -67,3 +69,18 @@ class GitHubMetadataFetcher(BaseMetadataFetcher):
         # archiving verbatim, though.
 
         return [(METADATA_FORMAT, metadata_bytes)]
+
+    def get_parent_origins(self) -> List[Origin]:
+        parents = []
+        for metadata in self.get_origin_metadata():
+            if metadata.format != METADATA_FORMAT:
+                continue
+            data = json.loads(metadata.metadata)
+            parent = data.get("parent")
+            source = data.get("source")
+            if parent is not None:
+                parents.append(Origin(url=parent["html_url"]))
+                if source is not None and source["html_url"] != parent["html_url"]:
+                    parents.append(Origin(url=source["html_url"]))
+
+        return parents

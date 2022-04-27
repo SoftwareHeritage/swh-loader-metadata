@@ -1,0 +1,12 @@
+swh.core[http]>=0.3
+swh.lister>=2.9.0
+swh.loader.core>=3.1.0
+swh.storage>=0.29.0
+
+[testing]
+pytest
+pytest-mock
+requests_mock
+types-requests
+types-PyYAML
+swh-storage[testing]
