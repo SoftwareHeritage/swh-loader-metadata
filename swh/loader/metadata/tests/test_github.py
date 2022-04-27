@@ -23,6 +23,8 @@ from swh.model.model import (
 from .test_base import DummyLoader
 
 ORIGIN = Origin("https://github.com/octocat/Hello-World")
+FORKED_ORIGIN = Origin("https://github.com/octocat/linguist")
+DOUBLE_FORKED_ORIGIN = Origin("https://github.com/jmarlena/linguist")
 
 METADATA_AUTHORITY = MetadataAuthority(
     type=MetadataAuthorityType.FORGE, url="https://github.com"
@@ -68,6 +70,37 @@ def test_github_metadata(datadir, requests_mock_datadir, mocker):
     )
 
     assert fetcher.get_origin_metadata() == [expected_metadata(now, datadir)]
+    assert fetcher.get_parent_origins() == []
+
+
+def test_github_metadata_fork(datadir, requests_mock_datadir, mocker):
+    now = datetime.datetime.now(tz=datetime.timezone.utc)
+    mocker.patch("swh.loader.metadata.base.now", return_value=now)
+
+    fetcher = GitHubMetadataFetcher(
+        FORKED_ORIGIN, credentials=None, lister_name="github", lister_instance_name=""
+    )
+
+    assert fetcher.get_parent_origins() == [
+        Origin(url="https://github.com/github/linguist"),
+    ]
+
+
+def test_github_metadata_fork_of_fork(datadir, requests_mock_datadir, mocker):
+    now = datetime.datetime.now(tz=datetime.timezone.utc)
+    mocker.patch("swh.loader.metadata.base.now", return_value=now)
+
+    fetcher = GitHubMetadataFetcher(
+        DOUBLE_FORKED_ORIGIN,
+        credentials=None,
+        lister_name="github",
+        lister_instance_name="",
+    )
+
+    assert fetcher.get_parent_origins() == [
+        Origin(url="https://github.com/octocat/linguist"),
+        Origin(url="https://github.com/github/linguist"),
+    ]
 
 
 def test_github_metadata_from_loader(
