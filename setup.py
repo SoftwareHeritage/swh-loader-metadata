@@ -54,6 +54,7 @@ setup(
     include_package_data=True,
     entry_points="""
         [swh.loader.metadata]
+        gitea=swh.loader.metadata.gitea:GiteaMetadataFetcher
         github=swh.loader.metadata.github:GitHubMetadataFetcher
     """,
     classifiers=[
