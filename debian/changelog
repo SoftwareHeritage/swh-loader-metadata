@@ -1,8 +1,11 @@
-swh-loader-metadata (0.0.2-1~swh1~bpo10+1) buster-swh; urgency=medium
+swh-loader-metadata (0.0.3-1~swh1) unstable-swh; urgency=medium
 
-  * Rebuild for buster-swh
+  * New upstream release 0.0.3     - (tagged by Valentin Lorentz
+    <vlorentz@softwareheritage.org> on 2022-10-05 12:54:19 +0200)
+  * Upstream changes:     - v0.0.3     - * Add Gitea/Gogs metadata
+    fetcher.
 
- -- Software Heritage autobuilder (on jenkins-debian1) <jenkins@jenkins-debian1.internal.softwareheritage.org>  Wed, 27 Apr 2022 14:44:03 +0000
+ -- Software Heritage autobuilder (on jenkins-debian1) <jenkins@jenkins-debian1.internal.softwareheritage.org>  Wed, 05 Oct 2022 10:57:26 +0000
 
 swh-loader-metadata (0.0.2-1~swh1) unstable-swh; urgency=medium
 
