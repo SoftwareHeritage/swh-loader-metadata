@@ -1,16 +1,14 @@
 Metadata-Version: 2.1
 Name: swh.loader.metadata
-Version: 0.0.2
+Version: 0.0.3
 Summary: Software Heritage Extrinsic Metadata Fetchers
 Home-page: https://forge.softwareheritage.org/diffusion/swh-loader-metadata
 Author: Software Heritage developers
 Author-email: swh-devel@inria.fr
-License: UNKNOWN
 Project-URL: Bug Reports, https://forge.softwareheritage.org/maniphest
 Project-URL: Funding, https://www.softwareheritage.org/donate
 Project-URL: Source, https://forge.softwareheritage.org/source/swh-loader-metadata
 Project-URL: Documentation, https://docs.softwareheritage.org/devel/swh-loader-metadata/
-Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
 Classifier: Intended Audience :: Developers
 Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
@@ -27,5 +25,3 @@ Software Heritage - Metadata Fetchers
 
 This package hooks into the loaders, and loads extrinsic metadata at the same time
 code artifacts are retrieved.
-
-
