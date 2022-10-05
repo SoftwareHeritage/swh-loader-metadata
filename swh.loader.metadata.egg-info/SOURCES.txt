@@ -34,13 +34,16 @@ swh.loader.metadata.egg-info/requires.txt
 swh.loader.metadata.egg-info/top_level.txt
 swh/loader/__init__.py
 swh/loader/metadata/__init__.py
-swh/loader/metadata/bar.py
 swh/loader/metadata/base.py
+swh/loader/metadata/gitea.py
 swh/loader/metadata/github.py
 swh/loader/metadata/py.typed
 swh/loader/metadata/tests/__init__.py
 swh/loader/metadata/tests/test_base.py
+swh/loader/metadata/tests/test_gitea.py
 swh/loader/metadata/tests/test_github.py
 swh/loader/metadata/tests/data/https_api.github.com/repos_jmarlena_linguist
 swh/loader/metadata/tests/data/https_api.github.com/repos_octocat_Hello-World
 swh/loader/metadata/tests/data/https_api.github.com/repos_octocat_linguist
+swh/loader/metadata/tests/data/https_codeberg.org/api_v1_repos_ForgeFed_ForgeFed
+swh/loader/metadata/tests/data/https_codeberg.org/api_v1_repos__ZN3val_ForgeFed

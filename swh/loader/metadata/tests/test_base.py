@@ -63,6 +63,7 @@ class DummyLoader(BaseLoader):
 
 class DummyMetadataFetcher(BaseMetadataFetcher):
     SUPPORTED_LISTERS = {"fake-lister"}
+    FETCHER_NAME = "dummy"
 
     def __init__(self, origin, credentials, lister_name, lister_instance_name):
         pass
