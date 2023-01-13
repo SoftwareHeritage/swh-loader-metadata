@@ -28,7 +28,7 @@ class InvalidOrigin(Exception):
     pass
 
 
-def now() -> datetime.datetime:
+def _now() -> datetime.datetime:
     # Used by tests for mocking
     return datetime.datetime.now(tz=datetime.timezone.utc)
 
@@ -161,7 +161,7 @@ class BaseMetadataFetcher:
                 self._origin_metadata_objects.append(
                     RawExtrinsicMetadata(
                         target=self.origin.swhid(),
-                        discovery_date=now(),
+                        discovery_date=_now(),
                         authority=self._metadata_authority(),
                         fetcher=self._metadata_fetcher(),
                         format=format_,

@@ -63,7 +63,7 @@ def test_type() -> None:
 
 def test_github_metadata(datadir, requests_mock_datadir, mocker):
     now = datetime.datetime.now(tz=datetime.timezone.utc)
-    mocker.patch("swh.loader.metadata.base.now", return_value=now)
+    mocker.patch("swh.loader.metadata.base._now", return_value=now)
 
     fetcher = GitHubMetadataFetcher(
         ORIGIN, credentials=None, lister_name="github", lister_instance_name=""
@@ -75,7 +75,7 @@ def test_github_metadata(datadir, requests_mock_datadir, mocker):
 
 def test_github_metadata_fork(datadir, requests_mock_datadir, mocker):
     now = datetime.datetime.now(tz=datetime.timezone.utc)
-    mocker.patch("swh.loader.metadata.base.now", return_value=now)
+    mocker.patch("swh.loader.metadata.base._now", return_value=now)
 
     fetcher = GitHubMetadataFetcher(
         FORKED_ORIGIN, credentials=None, lister_name="github", lister_instance_name=""
@@ -88,7 +88,7 @@ def test_github_metadata_fork(datadir, requests_mock_datadir, mocker):
 
 def test_github_metadata_fork_of_fork(datadir, requests_mock_datadir, mocker):
     now = datetime.datetime.now(tz=datetime.timezone.utc)
-    mocker.patch("swh.loader.metadata.base.now", return_value=now)
+    mocker.patch("swh.loader.metadata.base._now", return_value=now)
 
     fetcher = GitHubMetadataFetcher(
         DOUBLE_FORKED_ORIGIN,
@@ -113,7 +113,7 @@ def test_github_metadata_from_loader(
     }
 
     now = datetime.datetime.now(tz=datetime.timezone.utc)
-    mocker.patch("swh.loader.metadata.base.now", return_value=now)
+    mocker.patch("swh.loader.metadata.base._now", return_value=now)
 
     loader = DummyLoader(
         storage=swh_storage,
