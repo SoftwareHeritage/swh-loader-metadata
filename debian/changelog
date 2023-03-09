@@ -1,3 +1,16 @@
+swh-loader-metadata (1.0.0-1~swh1) unstable-swh; urgency=medium
+
+  * New upstream release 1.0.0     - (tagged by Valentin Lorentz
+    <vlorentz@softwareheritage.org> on 2023-03-09 15:21:21 +0100)
+  * Upstream changes:     - v1.0.0     - * Bump mypy, pre-commit,
+    codespell, black, flake8     - * Update tox.ini     - * Update and
+    clean tox configuration for version 4     - * Add journal client to
+    fetch metadata from origins not visited in a while     - * docs:
+    Include module indices only when building standalone package doc
+    - * Fix test broken by swh-storage v1.8.0
+
+ -- Software Heritage autobuilder (on jenkins-debian1) <jenkins@jenkins-debian1.internal.softwareheritage.org>  Thu, 09 Mar 2023 14:26:54 +0000
+
 swh-loader-metadata (0.0.3-1~swh1) unstable-swh; urgency=medium
 
   * New upstream release 0.0.3     - (tagged by Valentin Lorentz
