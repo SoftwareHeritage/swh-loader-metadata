@@ -28,7 +28,7 @@ class InvalidOrigin(Exception):
     pass
 
 
-def now() -> datetime.datetime:
+def _now() -> datetime.datetime:
     # Used by tests for mocking
     return datetime.datetime.now(tz=datetime.timezone.utc)
 
@@ -111,7 +111,7 @@ class BaseMetadataFetcher:
             f"{self.__class__.__name__}.get_origin_metadata_bytes"
         )
 
-    def _metadata_authority(self) -> MetadataAuthority:
+    def metadata_authority(self) -> MetadataAuthority:
         """Return information about the metadata authority that issued metadata
         we extract from the given origin"""
         (scheme, netloc, *_) = urllib.parse.urlsplit(self.origin.url)
@@ -161,8 +161,8 @@ class BaseMetadataFetcher:
                 self._origin_metadata_objects.append(
                     RawExtrinsicMetadata(
                         target=self.origin.swhid(),
-                        discovery_date=now(),
-                        authority=self._metadata_authority(),
+                        discovery_date=_now(),
+                        authority=self.metadata_authority(),
                         fetcher=self._metadata_fetcher(),
                         format=format_,
                         metadata=metadata_bytes,

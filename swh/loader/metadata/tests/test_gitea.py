@@ -62,7 +62,7 @@ def test_type() -> None:
 
 def test_gitea_metadata(datadir, requests_mock_datadir, mocker):
     now = datetime.datetime.now(tz=datetime.timezone.utc)
-    mocker.patch("swh.loader.metadata.base.now", return_value=now)
+    mocker.patch("swh.loader.metadata.base._now", return_value=now)
 
     fetcher = GiteaMetadataFetcher(
         ORIGIN, credentials=None, lister_name="gitea", lister_instance_name="gitea"
@@ -84,7 +84,7 @@ def test_gitea_metadata(datadir, requests_mock_datadir, mocker):
 
 def test_gitea_metadata_fork(datadir, requests_mock_datadir, mocker):
     now = datetime.datetime.now(tz=datetime.timezone.utc)
-    mocker.patch("swh.loader.metadata.base.now", return_value=now)
+    mocker.patch("swh.loader.metadata.base._now", return_value=now)
 
     fetcher = GiteaMetadataFetcher(
         FORKED_ORIGIN,
@@ -106,7 +106,7 @@ def test_gitea_metadata_from_loader(
     }
 
     now = datetime.datetime.now(tz=datetime.timezone.utc)
-    mocker.patch("swh.loader.metadata.base.now", return_value=now)
+    mocker.patch("swh.loader.metadata.base._now", return_value=now)
 
     loader = DummyLoader(
         storage=swh_storage,
