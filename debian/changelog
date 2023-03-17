@@ -1,3 +1,12 @@
+swh-loader-metadata (1.1.0-1~swh1) unstable-swh; urgency=medium
+
+  * New upstream release 1.1.0     - (tagged by Nicolas Dandrimont
+    <nicolas@dandrimont.eu> on 2023-03-17 13:01:00 +0100)
+  * Upstream changes:     - Release swh.loader.metadata v1.1.0     -
+    Ensure the CLI is properly hooked up as `swh metadata-loader`
+
+ -- Software Heritage autobuilder (on jenkins-debian1) <jenkins@jenkins-debian1.internal.softwareheritage.org>  Fri, 17 Mar 2023 12:04:24 +0000
+
 swh-loader-metadata (1.0.0-1~swh1) unstable-swh; urgency=medium
 
   * New upstream release 1.0.0     - (tagged by Valentin Lorentz
