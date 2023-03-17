@@ -11,8 +11,8 @@ from click.testing import CliRunner
 from confluent_kafka import Producer
 import yaml
 
+from swh.core.cli import swh as swh_cli_group
 from swh.journal.serializers import value_to_kafka
-from swh.loader.metadata.cli import metadata_loader_cli_group
 from swh.loader.metadata.journal_client import JournalClient
 
 
@@ -44,8 +44,8 @@ def invoke(
     with tempfile.NamedTemporaryFile("a", suffix=".yml") as config_fd:
         yaml.dump(config, config_fd)
         config_fd.seek(0)
-        args = ["-C" + config_fd.name] + list(args)
-        result = runner.invoke(metadata_loader_cli_group, args, catch_exceptions=False)
+        args = ["metadata-loader", "-C" + config_fd.name] + list(args)
+        result = runner.invoke(swh_cli_group, args, catch_exceptions=False)
     return result
 
 
