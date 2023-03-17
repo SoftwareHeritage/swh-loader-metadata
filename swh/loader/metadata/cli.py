@@ -7,11 +7,11 @@
 # control
 import click
 
-from swh.loader.cli import CONTEXT_SETTINGS
-from swh.loader.cli import loader as swh_loader_cli_group
+from swh.core.cli import CONTEXT_SETTINGS
+from swh.core.cli import swh as swh_cli_group
 
 
-@swh_loader_cli_group.group(name="metadata", context_settings=CONTEXT_SETTINGS)
+@swh_cli_group.group(name="metadata-loader", context_settings=CONTEXT_SETTINGS)
 @click.option(
     "--config-file",
     "-C",
