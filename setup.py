@@ -53,6 +53,8 @@ setup(
     extras_require={"testing": parse_requirements("test")},
     include_package_data=True,
     entry_points="""
+        [swh.cli.subcommands]
+        loader-metadata=swh.loader.metadata.cli
         [swh.loader.metadata]
         gitea=swh.loader.metadata.gitea:GiteaMetadataFetcher
         github=swh.loader.metadata.github:GitHubMetadataFetcher
