@@ -11,8 +11,8 @@ from click.testing import CliRunner
 from confluent_kafka import Producer
 import yaml
 
-from swh.core.cli import swh as swh_cli_group
 from swh.journal.serializers import value_to_kafka
+from swh.loader.metadata.cli import swh_cli_group
 from swh.loader.metadata.journal_client import JournalClient
 
 

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: swh.loader.metadata
-Version: 1.1.0
+Version: 1.2.0
 Summary: Software Heritage Extrinsic Metadata Fetchers
 Home-page: https://forge.softwareheritage.org/diffusion/swh-loader-metadata
 Author: Software Heritage developers
