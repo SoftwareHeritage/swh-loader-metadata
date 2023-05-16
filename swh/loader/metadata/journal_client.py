@@ -115,16 +115,23 @@ class JournalClient:
 
         lister = self._get_lister(listed_origin.lister_id)
 
+        tags = {
+            "lister": lister.name,
+            "lister_instance": lister.instance_name,
+        }
+
         fetcher_classes = cast(
             List[Type[BaseMetadataFetcher]], get_fetchers_for_lister(lister.name)
         )
-        self.statsd.histogram("metadata_fetchers", len(fetcher_classes))
+        self.statsd.histogram("metadata_fetchers", len(fetcher_classes), tags=tags)
 
         now = _now()
 
         metadata: List[RawExtrinsicMetadata] = []
 
         for cls in fetcher_classes:
+            tags["fetcher"] = cls.FETCHER_NAME
+
             metadata_fetcher = cls(
                 origin=origin,
                 lister_name=lister.name,
@@ -142,10 +149,16 @@ class JournalClient:
 
             if last_metadata.results:
                 # We already have recent metadata; don't load it again.
+                self.statsd.increment(
+                    "metadata_items_fetched_total", len(last_metadata.results), tags=tags
+                )
+
                 continue
 
-            with self.statsd_timed("get_origin_metadata"):
+            with self.statsd_timed("get_origin_metadata", tags=tags):
                 metadata = list(metadata_fetcher.get_origin_metadata())
+
+            self.statsd.increment("new_metadata_items", len(metadata), tags=tags)
 
             with self.statsd_timed("metadata_fetcher_add"):
                 self._add_metadata_fetchers({m.fetcher for m in metadata})
