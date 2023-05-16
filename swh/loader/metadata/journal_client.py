@@ -72,6 +72,7 @@ class JournalClient:
         for fetcher in fetchers:
             if fetcher not in self._added_fetchers:
                 self.storage.metadata_fetcher_add([fetcher])
+                self._added_fetchers.add(fetcher)
 
     def _add_metadata_authorities(
         self, authorities: Iterable[MetadataAuthority]
@@ -79,6 +80,7 @@ class JournalClient:
         for authority in authorities:
             if authority not in self._added_authorities:
                 self.storage.metadata_authority_add([authority])
+                self._added_authorities.add(authority)
 
     def process_journal_objects(self, messages: Dict[str, List[Dict]]) -> None:
         """Loads metadata for origins not recently loaded:
