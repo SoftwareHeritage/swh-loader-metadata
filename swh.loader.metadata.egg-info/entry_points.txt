@@ -1,3 +1,6 @@
+[swh.cli.subcommands]
+loader-metadata = swh.loader.metadata.cli
+
 [swh.loader.metadata]
 gitea = swh.loader.metadata.gitea:GiteaMetadataFetcher
 github = swh.loader.metadata.github:GitHubMetadataFetcher

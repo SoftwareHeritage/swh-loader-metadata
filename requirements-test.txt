@@ -1,3 +1,5 @@
+confluent-kafka
+
 pytest
 pytest-mock
 requests_mock

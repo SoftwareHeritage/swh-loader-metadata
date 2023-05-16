@@ -1,8 +1,34 @@
-swh-loader-metadata (0.0.3-1~swh1~bpo10+1) buster-swh; urgency=medium
+swh-loader-metadata (1.2.0-1~swh1) unstable-swh; urgency=medium
 
-  * Rebuild for buster-swh
+  * New upstream release 1.2.0     - (tagged by Valentin Lorentz
+    <vlorentz@softwareheritage.org> on 2023-05-15 13:35:48 +0200)
+  * Upstream changes:     - v1.2.0     - * journal_client: Add timing
+    metrics     - * test_cli: Fix execution when package is installed in
+    editable mode
 
- -- Software Heritage autobuilder (on jenkins-debian1) <jenkins@jenkins-debian1.internal.softwareheritage.org>  Wed, 05 Oct 2022 10:58:48 +0000
+ -- Software Heritage autobuilder (on jenkins-debian1) <jenkins@jenkins-debian1.internal.softwareheritage.org>  Mon, 15 May 2023 11:39:15 +0000
+
+swh-loader-metadata (1.1.0-1~swh1) unstable-swh; urgency=medium
+
+  * New upstream release 1.1.0     - (tagged by Nicolas Dandrimont
+    <nicolas@dandrimont.eu> on 2023-03-17 13:01:00 +0100)
+  * Upstream changes:     - Release swh.loader.metadata v1.1.0     -
+    Ensure the CLI is properly hooked up as `swh metadata-loader`
+
+ -- Software Heritage autobuilder (on jenkins-debian1) <jenkins@jenkins-debian1.internal.softwareheritage.org>  Fri, 17 Mar 2023 12:04:24 +0000
+
+swh-loader-metadata (1.0.0-1~swh1) unstable-swh; urgency=medium
+
+  * New upstream release 1.0.0     - (tagged by Valentin Lorentz
+    <vlorentz@softwareheritage.org> on 2023-03-09 15:21:21 +0100)
+  * Upstream changes:     - v1.0.0     - * Bump mypy, pre-commit,
+    codespell, black, flake8     - * Update tox.ini     - * Update and
+    clean tox configuration for version 4     - * Add journal client to
+    fetch metadata from origins not visited in a while     - * docs:
+    Include module indices only when building standalone package doc
+    - * Fix test broken by swh-storage v1.8.0
+
+ -- Software Heritage autobuilder (on jenkins-debian1) <jenkins@jenkins-debian1.internal.softwareheritage.org>  Thu, 09 Mar 2023 14:26:54 +0000
 
 swh-loader-metadata (0.0.3-1~swh1) unstable-swh; urgency=medium
 

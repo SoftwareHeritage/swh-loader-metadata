@@ -35,13 +35,17 @@ swh.loader.metadata.egg-info/top_level.txt
 swh/loader/__init__.py
 swh/loader/metadata/__init__.py
 swh/loader/metadata/base.py
+swh/loader/metadata/cli.py
 swh/loader/metadata/gitea.py
 swh/loader/metadata/github.py
+swh/loader/metadata/journal_client.py
 swh/loader/metadata/py.typed
 swh/loader/metadata/tests/__init__.py
 swh/loader/metadata/tests/test_base.py
+swh/loader/metadata/tests/test_cli.py
 swh/loader/metadata/tests/test_gitea.py
 swh/loader/metadata/tests/test_github.py
+swh/loader/metadata/tests/test_journal_client.py
 swh/loader/metadata/tests/data/https_api.github.com/repos_jmarlena_linguist
 swh/loader/metadata/tests/data/https_api.github.com/repos_octocat_Hello-World
 swh/loader/metadata/tests/data/https_api.github.com/repos_octocat_linguist
