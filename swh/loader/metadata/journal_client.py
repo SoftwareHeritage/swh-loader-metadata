@@ -105,7 +105,8 @@ class JournalClient:
             ):
                 self._process_listed_origin(listed_origin)
 
-        self.storage.flush()
+        with self.statsd_timed("flush_storage"):
+            self.storage.flush()
 
     def _process_listed_origin(
         self,
