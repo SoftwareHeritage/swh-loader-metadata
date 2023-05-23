@@ -105,7 +105,8 @@ class JournalClient:
             ):
                 self._process_listed_origin(listed_origin)
 
-        self.storage.flush()
+        with self.statsd_timed("flush_storage"):
+            self.storage.flush()
 
     def _process_listed_origin(
         self,
@@ -150,7 +151,9 @@ class JournalClient:
             if last_metadata.results:
                 # We already have recent metadata; don't load it again.
                 self.statsd.increment(
-                    "metadata_items_fetched_total", len(last_metadata.results), tags=tags
+                    "metadata_items_fetched_total",
+                    len(last_metadata.results),
+                    tags=tags,
                 )
 
                 continue
@@ -158,7 +161,9 @@ class JournalClient:
             with self.statsd_timed("get_origin_metadata", tags=tags):
                 metadata = list(metadata_fetcher.get_origin_metadata())
 
-            self.statsd.increment("new_metadata_items", len(metadata), tags=tags)
+            self.statsd.increment(
+                "metadata_items_added_total", len(metadata), tags=tags
+            )
 
             with self.statsd_timed("metadata_fetcher_add"):
                 self._add_metadata_fetchers({m.fetcher for m in metadata})
