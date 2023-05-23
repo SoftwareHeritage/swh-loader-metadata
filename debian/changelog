@@ -1,8 +1,12 @@
-swh-loader-metadata (1.3.0-1~swh1~bpo10+1) buster-swh; urgency=medium
+swh-loader-metadata (1.3.1-1~swh1) unstable-swh; urgency=medium
 
-  * Rebuild for buster-swh
+  * New upstream release 1.3.1     - (tagged by Valentin Lorentz
+    <vlorentz@softwareheritage.org> on 2023-05-23 14:53:32 +0200)
+  * Upstream changes:     - v1.3.1     - * Fix inconsistent metric name:
+    metadata_items_fetched_total -> metadata_items_fetched_total     - *
+    Add timing for storage.flush()
 
- -- Software Heritage autobuilder (on jenkins-debian1) <jenkins@jenkins-debian1.internal.softwareheritage.org>  Wed, 17 May 2023 13:29:39 +0000
+ -- Software Heritage autobuilder (on jenkins-debian1) <jenkins@jenkins-debian1.internal.softwareheritage.org>  Tue, 23 May 2023 12:58:13 +0000
 
 swh-loader-metadata (1.3.0-1~swh1) unstable-swh; urgency=medium
 
