@@ -1,5 +1,4 @@
 swh.core[http]>=0.3
-swh.lister>=2.9.0
 swh.loader.core>=5.2.0
 swh.storage>=1.8.0
 
