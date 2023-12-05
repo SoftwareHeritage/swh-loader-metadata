@@ -128,7 +128,6 @@ def test_github_origin__first_time(
     known_authority: bool,
     known_fetcher: bool,
 ):
-
     origin_url = "https://github.com/example/test"
     origin = Origin(origin_url)
     storage = MagicMock(wraps=swh_storage)

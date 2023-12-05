@@ -96,7 +96,6 @@ class JournalClient:
         assert set(messages) == {"origin"}, f"Unexpected message types: {set(messages)}"
 
         for origin in messages["origin"]:
-
             for listed_origin in stream_results(
                 self.statsd_timed("get_listed_origins")(
                     self.scheduler.get_listed_origins
