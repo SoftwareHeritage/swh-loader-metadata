@@ -157,7 +157,7 @@ class BaseMetadataFetcher:
         """Return a list of metadata objects for the given origin."""
         if self._origin_metadata_objects is None:
             self._origin_metadata_objects = []
-            for (format_, metadata_bytes) in self._get_origin_metadata_bytes():
+            for format_, metadata_bytes in self._get_origin_metadata_bytes():
                 self._origin_metadata_objects.append(
                     RawExtrinsicMetadata(
                         target=self.origin.swhid(),
