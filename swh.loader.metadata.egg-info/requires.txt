@@ -3,6 +3,9 @@ swh.loader.core>=5.2.0
 swh.storage>=1.8.0
 
 [testing]
+swh.core[http]>=0.3
+swh.loader.core>=5.2.0
+swh.storage>=1.8.0
 confluent-kafka
 pytest
 pytest-mock
