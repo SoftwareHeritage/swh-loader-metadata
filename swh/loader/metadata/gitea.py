@@ -1,4 +1,4 @@
-# Copyright (C) 2022  The Software Heritage developers
+# Copyright (C) 2022-2023  The Software Heritage developers
 # See the AUTHORS file at the top-level directory of this distribution
 # License: GNU General Public License version 3, or any later version
 # See top-level LICENSE file for more information
@@ -84,13 +84,14 @@ class _BaseGiteaMetadataFetcher(BaseMetadataFetcher):
         (scheme, netloc, path, query, fragment) = urllib.parse.urlsplit(self.origin.url)
         path = urllib.parse.unquote(path)
 
-        # Normalize it, so only ``:namespace/:project`` is left
+        # remove .git suffix from origin URL
         path = path.strip("/")
         if path.endswith(".git"):
             path = path[0:-4]
-        assert path.count("/") == 1, f"Unexpected number of / in {path}"
 
-        api_path = f"/api/v1/repos/{path}"
+        # construct Gitea API URL: [path_prefix]/api/v1/repos/(owner)/(project)
+        *base_path, owner, project = path.rsplit("/", maxsplit=2)
+        api_path = f"{''.join(base_path)}/api/v1/repos/{owner}/{project}"
 
         return urllib.parse.urlunsplit((scheme, netloc, api_path, "", ""))
 

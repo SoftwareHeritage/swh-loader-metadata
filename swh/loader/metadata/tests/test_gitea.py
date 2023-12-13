@@ -1,9 +1,10 @@
-# Copyright (C) 2022  The Software Heritage developers
+# Copyright (C) 2022-2023  The Software Heritage developers
 # See the AUTHORS file at the top-level directory of this distribution
 # License: GNU General Public License version 3, or any later version
 # See top-level LICENSE file for more information
 
 import datetime
+import json
 from pathlib import Path
 from typing import Type
 
@@ -24,6 +25,9 @@ from .test_base import DummyLoader
 
 ORIGIN = Origin("https://codeberg.org/ForgeFed/ForgeFed")
 FORKED_ORIGIN = Origin("https://codeberg.org/_ZN3val/ForgeFed")
+ORIGIN_WITH_PATH_PREFIX = Origin(
+    "https://git.osgeo.org/gitea/postgis/postgis-workshops"
+)
 
 METADATA_AUTHORITY = MetadataAuthority(
     type=MetadataAuthorityType.FORGE, url="https://codeberg.org"
@@ -119,3 +123,23 @@ def test_gitea_metadata_from_loader(
     assert swh_storage.raw_extrinsic_metadata_get(
         ORIGIN.swhid(), METADATA_AUTHORITY
     ).results == [expected_metadata(now, datadir)]
+
+
+def test_gitea_metadata_origin_with_path_prefix(datadir, requests_mock_datadir, mocker):
+    now = datetime.datetime.now(tz=datetime.timezone.utc)
+    mocker.patch("swh.loader.metadata.base._now", return_value=now)
+
+    fetcher = GiteaMetadataFetcher(
+        ORIGIN_WITH_PATH_PREFIX,
+        credentials=None,
+        lister_name="gitea",
+        lister_instance_name="gitea",
+    )
+
+    metadata = fetcher.get_origin_metadata()
+
+    assert (
+        metadata
+        and json.loads(metadata[0].metadata).get("html_url")
+        == ORIGIN_WITH_PATH_PREFIX.url
+    )
