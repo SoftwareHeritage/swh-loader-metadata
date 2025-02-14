@@ -3,6 +3,7 @@ confluent-kafka
 pytest >= 8.1
 pytest-mock
 requests_mock
+types-confluent-kafka
 types-requests
 types-PyYAML
 
