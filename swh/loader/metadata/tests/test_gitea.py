@@ -1,14 +1,13 @@
-# Copyright (C) 2022-2023  The Software Heritage developers
+# Copyright (C) 2022-2025  The Software Heritage developers
 # See the AUTHORS file at the top-level directory of this distribution
 # License: GNU General Public License version 3, or any later version
 # See top-level LICENSE file for more information
 
 import datetime
+from importlib.metadata import entry_points
 import json
 from pathlib import Path
 from typing import Type
-
-import pkg_resources
 
 from swh.loader.core.metadata_fetchers import MetadataFetcherProtocol
 from swh.loader.metadata import __version__
@@ -106,7 +105,7 @@ def test_gitea_metadata_from_loader(
     # Fail early if this package is not fully installed
     assert "gitea" in {
         entry_point.name
-        for entry_point in pkg_resources.iter_entry_points("swh.loader.metadata")
+        for entry_point in entry_points().select(group="swh.loader.metadata")
     }
 
     now = datetime.datetime.now(tz=datetime.timezone.utc)
