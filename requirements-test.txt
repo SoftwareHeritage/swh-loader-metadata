@@ -7,4 +7,5 @@ types-confluent-kafka
 types-requests
 types-PyYAML
 
+swh-journal[pytest]
 swh-storage[testing]
