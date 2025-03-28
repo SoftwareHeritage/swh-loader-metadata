@@ -8,4 +8,4 @@ types-requests
 types-PyYAML
 
 swh-journal[pytest]
-swh-storage[testing]
+swh.storage[pytest] >= 3.1.0
