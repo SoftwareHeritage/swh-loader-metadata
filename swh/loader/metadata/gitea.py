@@ -17,6 +17,7 @@ from typing import List, Optional, Tuple
 import urllib.parse
 
 import requests
+import requests.exceptions
 
 from swh.model.model import Origin
 
@@ -96,8 +97,12 @@ class _BaseGiteaMetadataFetcher(BaseMetadataFetcher):
         return urllib.parse.urlunsplit((scheme, netloc, api_path, "", ""))
 
     def _get_origin_metadata_bytes(self) -> List[Tuple[str, bytes]]:
-        response = self.session().get(self._api_url())
-        if response.status_code != 200:
+        try:
+            response = self.session().get(self._api_url())
+            if response.status_code != 200:
+                # TODO: retry
+                return []
+        except requests.exceptions.ConnectionError:
             # TODO: retry
             return []
 
