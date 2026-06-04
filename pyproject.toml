@@ -29,8 +29,10 @@ testing = {file = ["requirements.txt", "requirements-swh.txt", "requirements-tes
 "swh.loader.metadata" = "swh.loader.metadata.cli"
 
 [project.entry-points."swh.loader.metadata"]
+forgejo = "swh.loader.metadata.gitea:ForgejoMetadataFetcher"
 gitea = "swh.loader.metadata.gitea:GiteaMetadataFetcher"
 github = "swh.loader.metadata.github:GitHubMetadataFetcher"
+gogs = "swh.loader.metadata.gitea:GogsMetadataFetcher"
 
 [project.urls]
 "Homepage" = "https://gitlab.softwareheritage.org/swh/devel/swh-loader-metadata"
