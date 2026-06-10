@@ -69,7 +69,7 @@ class _BaseGiteaMetadataFetcher(BaseMetadataFetcher):
         raise NotImplementedError(f"{self.__class__.__name__}.on_anonymous_mode()")
 
     def _check_origin(self):
-        (scheme, netloc, path, query, fragment) = urllib.parse.urlsplit(self.origin.url)
+        scheme, netloc, path, query, fragment = urllib.parse.urlsplit(self.origin.url)
 
         if scheme not in ("http", "https") or not re.match(
             r"/[^\s/]+/[^\s/]+(\.git)?", path
@@ -82,7 +82,7 @@ class _BaseGiteaMetadataFetcher(BaseMetadataFetcher):
             )
 
     def _api_url(self):
-        (scheme, netloc, path, query, fragment) = urllib.parse.urlsplit(self.origin.url)
+        scheme, netloc, path, query, fragment = urllib.parse.urlsplit(self.origin.url)
         path = urllib.parse.unquote(path)
 
         # remove .git suffix from origin URL

@@ -1,4 +1,4 @@
-# Copyright (C) 2022-2023  The Software Heritage developers
+# Copyright (C) 2022-2026  The Software Heritage developers
 # See the AUTHORS file at the top-level directory of this distribution
 # License: GNU General Public License version 3, or any later version
 # See top-level LICENSE file for more information
@@ -41,7 +41,7 @@ class GitHubMetadataFetcher(BaseMetadataFetcher):
         return self._github_session
 
     def _check_origin(self):
-        (scheme, netloc, path, query, fragment) = urllib.parse.urlsplit(self.origin.url)
+        scheme, netloc, path, query, fragment = urllib.parse.urlsplit(self.origin.url)
         if netloc != "github.com":
             # TODO: relax this check when we support self-hosted GitHub instances
             raise InvalidOrigin(f"netloc should be 'github.com', not '{netloc}'")
@@ -55,7 +55,7 @@ class GitHubMetadataFetcher(BaseMetadataFetcher):
             )
 
     def _get_origin_metadata_bytes(self) -> List[Tuple[str, bytes]]:
-        (scheme, netloc, path, query, fragment) = urllib.parse.urlsplit(self.origin.url)
+        scheme, netloc, path, query, fragment = urllib.parse.urlsplit(self.origin.url)
         response = self.github_session().request(_API_URL.format(path=path))
         if response.status_code != 200:
             # TODO: retry
